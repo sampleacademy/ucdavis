@@ -230,19 +230,19 @@ Attribute = sample(c(&#39;big&#39;, &#39;small&#39;, &#39;angry&#39;, &#39;cute&
 <h2>Question (b)</h2>
 <p>Using the <code>sum()</code> function and a logical vector, compute the number of animals that are cats or dogs (1 point).</p>
 <pre class="r"><code>sum(Animal == &#39;cat&#39; | Animal == &#39;dog&#39;)</code></pre>
-<pre><code>## [1] 52</code></pre>
+<pre><code>## [1] 53</code></pre>
 </div>
 <div id="question-c" class="section level2">
 <h2>Question (c)</h2>
 <p>Compute the relative frequency of cats, dogs, cows and squirrels in the sample (1 point).</p>
 <pre class="r"><code>mean(Animal == &#39;cat&#39;)</code></pre>
-<pre><code>## [1] 0.21</code></pre>
+<pre><code>## [1] 0.29</code></pre>
 <pre class="r"><code>mean(Animal == &#39;dog&#39;)</code></pre>
-<pre><code>## [1] 0.31</code></pre>
+<pre><code>## [1] 0.24</code></pre>
 <pre class="r"><code>mean(Animal == &#39;cow&#39;)</code></pre>
-<pre><code>## [1] 0.24</code></pre>
+<pre><code>## [1] 0.26</code></pre>
 <pre class="r"><code>mean(Animal == &#39;squirrel&#39;)</code></pre>
-<pre><code>## [1] 0.24</code></pre>
+<pre><code>## [1] 0.21</code></pre>
 </div>
 <div id="question-d" class="section level2">
 <h2>Question (d)</h2>
@@ -250,10 +250,10 @@ Attribute = sample(c(&#39;big&#39;, &#39;small&#39;, &#39;angry&#39;, &#39;cute&
 <pre class="r"><code>table(Animal, Attribute)</code></pre>
 <pre><code>##           Attribute
 ## Animal     angry big cute finicky small
-##   cat          5   3    6       3     4
-##   cow          5   4    6       5     4
-##   dog          4   8    9       6     4
-##   squirrel     2   5    9       4     4</code></pre>
+##   cat          3  10    3       6     7
+##   cow          3   5    7       7     4
+##   dog          5   2    6       8     3
+##   squirrel     7   2    3       6     3</code></pre>
 </div>
 <div id="question-e" class="section level2">
 <h2>Question (e)</h2>
@@ -308,23 +308,23 @@ y = c(7, -1, -3, 5, 17)</code></pre>
 <pre class="r"><code>p3matrix = matrix(sample(1:10, size=50, replace=T), nrow = 10, ncol = 5)
 p3matrix</code></pre>
 <pre><code>##       [,1] [,2] [,3] [,4] [,5]
-##  [1,]   10    5    9    6    2
-##  [2,]    9    2    6    9    3
-##  [3,]    5    9    7    8    9
-##  [4,]   10    7    1    4    6
-##  [5,]    5    7    4    2   10
-##  [6,]    7    1   10    5    3
-##  [7,]    2    2    2    5    3
-##  [8,]    1    2    7    5    1
-##  [9,]    9    2    5   10    7
-## [10,]    4    3   10    4    5</code></pre>
+##  [1,]    9    4    7    2    7
+##  [2,]    8    3    7    6    5
+##  [3,]    2    8    3    8    3
+##  [4,]   10    6    5    4    7
+##  [5,]    6    6    1    9    4
+##  [6,]    2    5    4    9    2
+##  [7,]    8    7    9    1    6
+##  [8,]    5    2    2    5    5
+##  [9,]    5    1    5    5    6
+## [10,]    7    7    7    7    4</code></pre>
 </div>
 <div id="question-b-2" class="section level2">
 <h2>Question (b)</h2>
 <p>Apply the <code>dist()</code> function to the above matrix and assign the output to an object called <code>m_dist</code>. Assume that you want to print the first 6 rows of <code>m_dist</code>, and since we learned that we can use the <code>head()</code> function for printing the first few rows of a matrix or of a dataframe, try using it on <code>m_dist</code>. What does <code>head(m_dist)</code> return? What is the class of <code>m_dist</code>? Explain in words in addition to writing the code. (2 point)</p>
 <pre class="r"><code>m_dist = dist(p3matrix)
 head(m_dist)</code></pre>
-<pre><code>## [1]  5.385165  9.899495  9.380832 11.575837  5.291503 11.135529</code></pre>
+<pre><code>## [1]  4.690416 11.532563  3.605551 10.344080 11.532563  4.000000</code></pre>
 <pre class="r"><code>class(m_dist)</code></pre>
 <pre><code>## [1] &quot;dist&quot;</code></pre>
 <p>As we can see above, the <code>head(m_dist)</code> return the first six numbers of the distance matrix of <code>p3matrix</code> we created in Question (a).</p>
@@ -334,20 +334,20 @@ head(m_dist)</code></pre>
 <h2>Question (c)</h2>
 <p>Write a code to print the first 6 rows of <code>m_dist</code> (2 point). Hint: transform <code>m_dist</code> into an object where you can use the <code>head()</code> function.</p>
 <pre class="r"><code>head(as.matrix(m_dist))</code></pre>
-<pre><code>##           1         2         3         4         5         6         7
-## 1  0.000000  5.385165  9.899495  9.380832 11.575837  5.291503 11.135529
-## 2  5.385165  0.000000 10.148892  9.219544 11.958261  6.082763  9.000000
-## 3  9.899495 10.148892  0.000000  9.486833  7.071068 11.045361 11.313708
-## 4  9.380832  9.219544  9.486833  0.000000  7.348469 11.661904 10.000000
-## 5 11.575837 11.958261  7.071068  7.348469  0.000000 11.575837  9.797959
-## 6  5.291503  6.082763 11.045361 11.661904 11.575837  0.000000  9.486833
-##           8         9        10
-## 1  9.797959  8.185353  7.348469
-## 2  9.219544  4.242641  8.426150
-## 3 11.747340  8.774964  8.831761
-## 4 12.961481  8.888194 11.575837
-## 5 11.832160 10.723805  9.055385
-## 6  7.071068  8.426150  4.242641</code></pre>
+<pre><code>##           1        2         3         4         5         6         7        8
+## 1  0.000000 4.690416 11.532563  3.605551 10.344080 11.532563  4.000000 7.615773
+## 2  4.690416 0.000000  9.219544  5.000000  7.681146  8.185353  6.782330 6.000000
+## 3 11.532563 9.219544  0.000000 10.198039  5.099020  3.464102 11.445523 7.681146
+## 4  3.605551 5.000000 10.198039  0.000000  8.124038 10.770330  5.567764 7.416198
+## 5 10.344080 7.681146  5.099020  8.124038  0.000000  5.477226 11.704700 5.916080
+## 6 11.532563 8.185353  3.464102 10.770330  5.477226  0.000000 12.041595 6.855655
+##          9       10
+## 1 6.244998 6.855655
+## 2 4.358899 4.358899
+## 3 8.944272 6.633250
+## 4 7.211103 5.656854
+## 5 7.874008 6.480741
+## 6 7.615773 6.782330</code></pre>
 </div>
 </div>
 <div id="problem-4-data-exploration-and-manipulation" class="section level1">
@@ -475,7 +475,7 @@ tail(arrange(countypop, pop_2015, sort=TRUE), 1)</code></pre>
 <p>In order to answer the following question, combine the functions <code>lapply()</code>, <code>split()</code>, <code>order()</code>, and <code>tail()</code> (or <code>head()</code>): What is the largest county in terms of population of each of the states (2 points)?</p>
 <pre class="r"><code>groups = sort(countypop$abbr)
 data = split(countypop[order(countypop$abbr, countypop$pop_2015),], groups)
-lapply(data, tail, 1)</code></pre>
+head(lapply(data, tail, 1), 10)</code></pre>
 <pre><code>## $AK
 ## # A tibble: 1 x 4
 ##   fips  abbr  county                 pop_2015
@@ -534,253 +534,7 @@ lapply(data, tail, 1)</code></pre>
 ## # A tibble: 1 x 4
 ##   fips  abbr  county            pop_2015
 ##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;                &lt;dbl&gt;
-## 1 12086 FL    Miami-Dade County  2693117
-## 
-## $GA
-## # A tibble: 1 x 4
-##   fips  abbr  county        pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;
-## 1 13121 GA    Fulton County  1010562
-## 
-## $HI
-## # A tibble: 1 x 4
-##   fips  abbr  county          pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;
-## 1 15003 HI    Honolulu County   998714
-## 
-## $IA
-## # A tibble: 1 x 4
-##   fips  abbr  county      pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;          &lt;dbl&gt;
-## 1 19153 IA    Polk County   467711
-## 
-## $ID
-## # A tibble: 1 x 4
-##   fips  abbr  county     pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;         &lt;dbl&gt;
-## 1 16001 ID    Ada County   434211
-## 
-## $IL
-## # A tibble: 1 x 4
-##   fips  abbr  county      pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;          &lt;dbl&gt;
-## 1 17031 IL    Cook County  5238216
-## 
-## $IN
-## # A tibble: 1 x 4
-##   fips  abbr  county        pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;
-## 1 18097 IN    Marion County   939020
-## 
-## $KS
-## # A tibble: 1 x 4
-##   fips  abbr  county         pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;             &lt;dbl&gt;
-## 1 20091 KS    Johnson County   580159
-## 
-## $KY
-## # A tibble: 1 x 4
-##   fips  abbr  county           pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;               &lt;dbl&gt;
-## 1 21111 KY    Jefferson County   763623
-## 
-## $LA
-## # A tibble: 1 x 4
-##   fips  abbr  county                  pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;                      &lt;dbl&gt;
-## 1 22033 LA    East Baton Rouge Parish   446753
-## 
-## $MA
-## # A tibble: 1 x 4
-##   fips  abbr  county           pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;               &lt;dbl&gt;
-## 1 25017 MA    Middlesex County  1585139
-## 
-## $MD
-## # A tibble: 1 x 4
-##   fips  abbr  county            pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;                &lt;dbl&gt;
-## 1 24031 MD    Montgomery County  1040116
-## 
-## $ME
-## # A tibble: 1 x 4
-##   fips  abbr  county            pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;                &lt;dbl&gt;
-## 1 23005 ME    Cumberland County   289977
-## 
-## $MI
-## # A tibble: 1 x 4
-##   fips  abbr  county       pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;           &lt;dbl&gt;
-## 1 26163 MI    Wayne County  1759335
-## 
-## $MN
-## # A tibble: 1 x 4
-##   fips  abbr  county          pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;
-## 1 27053 MN    Hennepin County  1223149
-## 
-## $MO
-## # A tibble: 1 x 4
-##   fips  abbr  county           pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;               &lt;dbl&gt;
-## 1 29189 MO    St. Louis County  1003362
-## 
-## $MS
-## # A tibble: 1 x 4
-##   fips  abbr  county       pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;           &lt;dbl&gt;
-## 1 28049 MS    Hinds County   242891
-## 
-## $MT
-## # A tibble: 1 x 4
-##   fips  abbr  county             pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;                 &lt;dbl&gt;
-## 1 30111 MT    Yellowstone County   157048
-## 
-## $NC
-## # A tibble: 1 x 4
-##   fips  abbr  county             pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;                 &lt;dbl&gt;
-## 1 37119 NC    Mecklenburg County  1034070
-## 
-## $ND
-## # A tibble: 1 x 4
-##   fips  abbr  county      pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;          &lt;dbl&gt;
-## 1 38017 ND    Cass County   171512
-## 
-## $NE
-## # A tibble: 1 x 4
-##   fips  abbr  county         pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;             &lt;dbl&gt;
-## 1 31055 NE    Douglas County   550064
-## 
-## $NH
-## # A tibble: 1 x 4
-##   fips  abbr  county              pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;                  &lt;dbl&gt;
-## 1 33011 NH    Hillsborough County   406678
-## 
-## $NJ
-## # A tibble: 1 x 4
-##   fips  abbr  county        pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;
-## 1 34003 NJ    Bergen County   938506
-## 
-## $NM
-## # A tibble: 1 x 4
-##   fips  abbr  county            pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;                &lt;dbl&gt;
-## 1 35001 NM    Bernalillo County   676685
-## 
-## $NV
-## # A tibble: 1 x 4
-##   fips  abbr  county       pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;           &lt;dbl&gt;
-## 1 32003 NV    Clark County  2114801
-## 
-## $NY
-## # A tibble: 1 x 4
-##   fips  abbr  county       pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;           &lt;dbl&gt;
-## 1 36047 NY    Kings County  2636735
-## 
-## $OH
-## # A tibble: 1 x 4
-##   fips  abbr  county          pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;
-## 1 39035 OH    Cuyahoga County  1255921
-## 
-## $OK
-## # A tibble: 1 x 4
-##   fips  abbr  county          pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;
-## 1 40109 OK    Oklahoma County   776864
-## 
-## $OR
-## # A tibble: 1 x 4
-##   fips  abbr  county           pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;               &lt;dbl&gt;
-## 1 41051 OR    Multnomah County   790294
-## 
-## $PA
-## # A tibble: 1 x 4
-##   fips  abbr  county              pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;                  &lt;dbl&gt;
-## 1 42101 PA    Philadelphia County  1567442
-## 
-## $RI
-## # A tibble: 1 x 4
-##   fips  abbr  county            pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;                &lt;dbl&gt;
-## 1 44007 RI    Providence County   633473
-## 
-## $SC
-## # A tibble: 1 x 4
-##   fips  abbr  county            pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;                &lt;dbl&gt;
-## 1 45045 SC    Greenville County   491863
-## 
-## $SD
-## # A tibble: 1 x 4
-##   fips  abbr  county           pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;               &lt;dbl&gt;
-## 1 46099 SD    Minnehaha County   185197
-## 
-## $TN
-## # A tibble: 1 x 4
-##   fips  abbr  county        pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;
-## 1 47157 TN    Shelby County   938069
-## 
-## $TX
-## # A tibble: 1 x 4
-##   fips  abbr  county        pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;
-## 1 48201 TX    Harris County  4538028
-## 
-## $UT
-## # A tibble: 1 x 4
-##   fips  abbr  county           pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;               &lt;dbl&gt;
-## 1 49035 UT    Salt Lake County  1107314
-## 
-## $VA
-## # A tibble: 1 x 4
-##   fips  abbr  county         pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;             &lt;dbl&gt;
-## 1 51059 VA    Fairfax County  1142234
-## 
-## $VT
-## # A tibble: 1 x 4
-##   fips  abbr  county            pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;                &lt;dbl&gt;
-## 1 50007 VT    Chittenden County   161382
-## 
-## $WA
-## # A tibble: 1 x 4
-##   fips  abbr  county      pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;          &lt;dbl&gt;
-## 1 53033 WA    King County  2117125
-## 
-## $WI
-## # A tibble: 1 x 4
-##   fips  abbr  county           pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;               &lt;dbl&gt;
-## 1 55079 WI    Milwaukee County   957735
-## 
-## $WV
-## # A tibble: 1 x 4
-##   fips  abbr  county         pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;             &lt;dbl&gt;
-## 1 54039 WV    Kanawha County   188332
-## 
-## $WY
-## # A tibble: 1 x 4
-##   fips  abbr  county         pop_2015
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;             &lt;dbl&gt;
-## 1 56021 WY    Laramie County    97121</code></pre>
+## 1 12086 FL    Miami-Dade County  2693117</code></pre>
 <pre class="r"><code># Extra credit - using dplyr library
 countypop %&gt;%
   group_by(abbr) %&gt;%
@@ -816,7 +570,7 @@ summarise(slice(arrange(countypop, desc(pop_2015)), 1:100), avg=mean(pop_2015))<
 <div id="question-j" class="section level2">
 <h2>Question (j)</h2>
 <p>How many people live in each of the states (2 points)?</p>
-<pre class="r"><code>aggregate(pop_2015 ~ abbr, data = countypop, sum)</code></pre>
+<pre class="r"><code>head(aggregate(pop_2015 ~ abbr, data = countypop, sum), 10)</code></pre>
 <pre><code>##    abbr pop_2015
 ## 1    AK   738432
 ## 2    AL  4832490
@@ -827,48 +581,7 @@ summarise(slice(arrange(countypop, desc(pop_2015)), 1:100), avg=mean(pop_2015))<
 ## 7    CT  3590886
 ## 8    DC   672228
 ## 9    DE   945934
-## 10   FL 20271272
-## 11   GA 10214860
-## 12   HI  1431603
-## 13   IA  3123899
-## 14   ID  1654930
-## 15   IL 12859995
-## 16   IN  6619680
-## 17   KS  2911641
-## 18   KY  4297380
-## 19   LA  4670724
-## 20   MA  6794422
-## 21   MD  6006401
-## 22   ME  1329328
-## 23   MI  9922576
-## 24   MN  5489594
-## 25   MO  6083672
-## 26   MS  2992333
-## 27   MT  1032949
-## 28   NC 10042802
-## 29   ND   756927
-## 30   NE  1896190
-## 31   NH  1330608
-## 32   NJ  8958013
-## 33   NM  2085109
-## 34   NV  2890845
-## 35   NY 19795791
-## 36   OH 11613423
-## 37   OK  3911338
-## 38   OR  4028977
-## 39   PA 12802503
-## 40   RI  1056298
-## 41   SC  4896146
-## 42   SD   858469
-## 43   TN  6600299
-## 44   TX 27469114
-## 45   UT  2995919
-## 46   VA  8382993
-## 47   VT   626042
-## 48   WA  7170351
-## 49   WI  5771337
-## 50   WV  1844128
-## 51   WY   586107</code></pre>
+## 10   FL 20271272</code></pre>
 <pre class="r"><code># Extra credit - using dplyr library
 countypop %&gt;%
   group_by(abbr) %&gt;%
@@ -969,7 +682,7 @@ sort(countypop$pop_2015, decreasing = TRUE)[1]
 tail(arrange(countypop, pop_2015, sort=TRUE), 1)
 groups = sort(countypop$abbr)
 data = split(countypop[order(countypop$abbr, countypop$pop_2015),], groups)
-lapply(data, tail, 1)
+head(lapply(data, tail, 1), 10)
 # Extra credit - using dplyr library
 countypop %&gt;%
   group_by(abbr) %&gt;%
@@ -977,7 +690,7 @@ countypop %&gt;%
 mean(sort(countypop$pop_2015, decreasing = TRUE)[1:100])
 # Extra credit - using dplyr library
 summarise(slice(arrange(countypop, desc(pop_2015)), 1:100), avg=mean(pop_2015))
-aggregate(pop_2015 ~ abbr, data = countypop, sum)
+head(aggregate(pop_2015 ~ abbr, data = countypop, sum), 10)
 # Extra credit - using dplyr library
 countypop %&gt;%
   group_by(abbr) %&gt;%
