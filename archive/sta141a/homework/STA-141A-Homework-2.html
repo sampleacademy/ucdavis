@@ -408,9 +408,11 @@ descr_stats = function(x){
   # Set up for frequency
   frequency = c()
   
-  # for loop for missing values, mean, and sample varaince
+  # for loop for missing values, mean, and sample variance
   for(i in 1:ncol(x)){
-    missing_values[i] = sum(is.na(x[i]))
+    missing_values[i] = paste(colnames(x)[i], 
+                              as.character(sum(is.na(x[i]))),
+                              sep = &quot;: &quot;)
     if (class(x[,i]) == &quot;character&quot; | class(x[,i]) == &quot;factor&quot;){
       char_fac_col_names = append(char_fac_col_names, colnames(x)[i])
     }
@@ -450,7 +452,7 @@ df &lt;- data.frame(x,y,z,w)</code></pre>
 <pre class="r"><code># Run the function
 descr_stats(df)</code></pre>
 <pre><code>## [[1]]
-## [1] 2 0 2 0
+## [1] &quot;x: 2&quot; &quot;y: 0&quot; &quot;z: 2&quot; &quot;w: 0&quot;
 ## 
 ## [[2]]
 ##         Mean  Variance
@@ -567,9 +569,11 @@ descr_stats = function(x){
   # Set up for frequency
   frequency = c()
   
-  # for loop for missing values, mean, and sample varaince
+  # for loop for missing values, mean, and sample variance
   for(i in 1:ncol(x)){
-    missing_values[i] = sum(is.na(x[i]))
+    missing_values[i] = paste(colnames(x)[i], 
+                              as.character(sum(is.na(x[i]))),
+                              sep = &quot;: &quot;)
     if (class(x[,i]) == &quot;character&quot; | class(x[,i]) == &quot;factor&quot;){
       char_fac_col_names = append(char_fac_col_names, colnames(x)[i])
     }
