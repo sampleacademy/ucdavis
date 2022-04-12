@@ -170,7 +170,7 @@ pre code {
 
 <h1 class="title toc-ignore">STA 141A Homework 2</h1>
 <h4 class="author">Li Yuan</h4>
-<h4 class="date">4/11/2022</h4>
+<h4 class="date">4/12/2022</h4>
 
 </div>
 
@@ -207,7 +207,7 @@ sums &lt;- numeric(n)
 for (i in 1:n) {
   sums &lt;- sum(1:i)
 }</code></pre>
-<p>The code cannot give us the output. Instead, it only give us the last term (1+2+3+4+5+6+7+8+9+10) = 55. It is because the code does not store the numbers as the first one, seconds one, and so on so it only stores the last number 55.</p>
+<p>The code cannot give us the output. Instead, it only give us the last term (1+2+3+4+5+6+7+8+9+10) = 55. It is because the code does not store the numbers as the first one, seconds one, and so on. So it only stores the last number 55. After running the loop once, we should add the result into a vector.</p>
 <p>The correct code should look like the following:</p>
 <pre class="r"><code>n &lt;- 10
 sums &lt;- numeric(n)
@@ -227,12 +227,18 @@ while(x[1] &lt; n){
 }
 x</code></pre>
 <p>Before running the code in <code>R</code>, try to read the code and understand what it does.</p>
-<p>We set n = 10, and x is a vector contains integers from 1 to 2 <span class="math inline">\(times\)</span> n = 20. The while loop works when the first number in the vector x is less than n = 10. As a result, when the condition matched, we will delete the first number x[1] and assign the rest of the vector to x. The while loop will stop when the first number in the x vector is 10. When the while loop stops, we will get the rest of the vector from 10 to 20.</p>
+<p>We set n = 10, and x is a vector contains integers from 1 to 2 <span class="math inline">\(\times\)</span> n = 20. The while loop works when the first number in the vector x is less than n = 10. As a result, when the condition matched, we will delete the first number x[1] and assign the rest of the vector to x. The while loop will stop when the first number in the x vector is 10. When the while loop stops, we will get the rest of the vector from 10 to 20.</p>
 </div>
 <div id="question-3" class="section level2">
 <h2>Question 3:</h2>
 <p>(2 points) In words, explain what the following code does:</p>
 <pre class="r"><code>lapply(c(5, 10), rnorm, m=c(0,10))</code></pre>
+<pre><code>## [[1]]
+## [1]  1.421095  9.550986 -2.402648 10.158953 -1.000093
+## 
+## [[2]]
+##  [1]  0.04170055 10.80416559  1.28243784 12.47953688 -1.95726389  7.12236444
+##  [7]  0.85230128 11.64381366 -0.70484746  9.80214902</code></pre>
 <p>Before running the code in <code>R</code>, try to read the code and understand what it does.</p>
 <p>The code above applies function <code>rnorm</code> to the vector <code>c(5, 10)</code> with means <code>c(0, 10)</code> and standard deviation 1.</p>
 <p>The first output is <strong>5</strong> random numbers, the first number takes 0 as the mean, the second number takes 10 as the mean, the third number takes 0 and the mean, so on so forth. When the index of the number is odd, it takes 0 as the mean; when the index of the number is even, it takes 10 as the mean. Moreover, every time it takes standard deviation = 1.</p>
@@ -396,7 +402,7 @@ descr_stats = function(x){
   final_result = NULL
   
   # Set up for missing values
-  missing_values = c()
+  missing_values = colSums(is.na(x))
   
   # Set up for mean and sample variance
   means = c()
@@ -408,11 +414,8 @@ descr_stats = function(x){
   # Set up for frequency
   frequency = c()
   
-  # for loop for missing values, mean, and sample variance
+  # for loop for mean, and sample variance
   for(i in 1:ncol(x)){
-    missing_values[i] = paste(colnames(x)[i], 
-                              as.character(sum(is.na(x[i]))),
-                              sep = &quot;: &quot;)
     if (class(x[,i]) == &quot;character&quot; | class(x[,i]) == &quot;factor&quot;){
       char_fac_col_names = append(char_fac_col_names, colnames(x)[i])
     }
@@ -433,8 +436,7 @@ descr_stats = function(x){
                          sep = &quot;: &quot;)
   }
   # Generate and return the final result
-  final_result = list(missing_values, mean_var_matrix, frequency)
-  final_result
+  return(list(missing_values, mean_var_matrix, frequency))
 }</code></pre>
 </div>
 <div id="question-b" class="section level2">
@@ -452,7 +454,8 @@ df &lt;- data.frame(x,y,z,w)</code></pre>
 <pre class="r"><code># Run the function
 descr_stats(df)</code></pre>
 <pre><code>## [[1]]
-## [1] &quot;x: 2&quot; &quot;y: 0&quot; &quot;z: 2&quot; &quot;w: 0&quot;
+## x y z w 
+## 2 0 2 0 
 ## 
 ## [[2]]
 ##         Mean  Variance
@@ -557,7 +560,7 @@ descr_stats = function(x){
   final_result = NULL
   
   # Set up for missing values
-  missing_values = c()
+  missing_values = colSums(is.na(x))
   
   # Set up for mean and sample variance
   means = c()
@@ -569,11 +572,8 @@ descr_stats = function(x){
   # Set up for frequency
   frequency = c()
   
-  # for loop for missing values, mean, and sample variance
+  # for loop for mean, and sample variance
   for(i in 1:ncol(x)){
-    missing_values[i] = paste(colnames(x)[i], 
-                              as.character(sum(is.na(x[i]))),
-                              sep = &quot;: &quot;)
     if (class(x[,i]) == &quot;character&quot; | class(x[,i]) == &quot;factor&quot;){
       char_fac_col_names = append(char_fac_col_names, colnames(x)[i])
     }
@@ -594,8 +594,7 @@ descr_stats = function(x){
                          sep = &quot;: &quot;)
   }
   # Generate and return the final result
-  final_result = list(missing_values, mean_var_matrix, frequency)
-  final_result
+  return(list(missing_values, mean_var_matrix, frequency))
 }
 set.seed(1)
 x &lt;- rnorm(100)
