@@ -236,10 +236,10 @@ model</code></pre>
 ##      1.9763       1.9307       0.3014</code></pre>
 <p>From the above code we can know that <span class="math inline">\(\hat{\beta_0}\)</span> = 1.9762757, <span class="math inline">\(\hat{\beta_1}\)</span> = 1.9307364, and <span class="math inline">\(\hat{\beta_2}\)</span> = 0.3014356. They are estimators of <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\beta_2\)</span>.</p>
 <p>Since <span class="math inline">\(\beta_0=2\)</span>, <span class="math inline">\(\beta_1=2\)</span>, and <span class="math inline">\(\beta_2=0.3\)</span>, which are similar to <span class="math inline">\(\hat{\beta_0}\)</span> = 1.9762757, <span class="math inline">\(\hat{\beta_1}\)</span> = 1.9307364, and <span class="math inline">\(\hat{\beta_2}\)</span> = 0.3014356. We may say that they are relative good estimators.</p>
-<pre class="r"><code>s = sum((model$residuals)^2)/(n-2-1)
+<pre class="r"><code>s = sqrt(sum((model$residuals)^2)/(n-2-1))
 s</code></pre>
-<pre><code>## [1] 0.9360869</code></pre>
-<p>From the code above, we can see that <span class="math inline">\(s\)</span> = 0.9360869. Since <span class="math inline">\(\sigma^2\)</span> = 1, which is similar to 0.9360869. So <code>s</code> is a relative good estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
+<pre><code>## [1] 0.9675158</code></pre>
+<p>From the code above, we can see that <span class="math inline">\(s\)</span> = 0.9675158. Since <span class="math inline">\(\sigma^2\)</span> = 1, which is similar to 0.9675158. So <code>s</code> is a relative good estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
 <pre class="r"><code>summary(model)</code></pre>
 <pre><code>## 
 ## Call:
@@ -274,10 +274,10 @@ model</code></pre>
 <p>From the above code we can know that <span class="math inline">\(\hat{\beta_0}\)</span> = 6.523468 and <span class="math inline">\(\hat{\beta_1}\)</span> = 1.9828892. They just estimators of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</p>
 <p>Obviously, <span class="math inline">\(\beta_0=2\)</span> is not similar to <span class="math inline">\(\hat{\beta_0}\)</span> = 6.523468. As a result, <span class="math inline">\(\hat{\beta_0}\)</span> is not a relative good estimator of <span class="math inline">\(\beta_0\)</span>.</p>
 <p>However, <span class="math inline">\(\beta_1=2\)</span> is similar to <span class="math inline">\(\hat{\beta_1}\)</span> = 1.9828892. As a result, <span class="math inline">\(\hat{\beta_1}\)</span> is a relative good estimator of <span class="math inline">\(\beta_1\)</span>.</p>
-<pre class="r"><code>s = sum((model$residuals)^2)/(n-1-1)
+<pre class="r"><code>s = sqrt(sum((model$residuals)^2)/(n-1-1))
 s</code></pre>
-<pre><code>## [1] 1.604525</code></pre>
-<p>From the code above, we can see that <span class="math inline">\(s\)</span> = 1.6045254. Since <span class="math inline">\(\sigma^2\)</span> = 1, which is not similar to 1.6045254. So <code>s</code> is not a relative good estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
+<pre><code>## [1] 1.266699</code></pre>
+<p>From the code above, we can see that <span class="math inline">\(s\)</span> = 1.2666986. Since <span class="math inline">\(\sigma^2\)</span> = 1, which is not similar to 1.2666986. So <code>s</code> is not a relative good estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
 <pre class="r"><code>summary(model)</code></pre>
 <pre><code>## 
 ## Call:
@@ -311,10 +311,10 @@ model</code></pre>
 <p>From the above code we can know that <span class="math inline">\(\hat{\beta_0}\)</span> = 2.9269773 and <span class="math inline">\(\hat{\beta_2}\)</span> = 0.3046728. They are estimators of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_2\)</span>.</p>
 <p>Obviously, <span class="math inline">\(\beta_0=2\)</span> is not similar to <span class="math inline">\(\hat{\beta_0}\)</span> = 2.9269773. As a result, <span class="math inline">\(\hat{\beta_0}\)</span> is not a relative good estimator of <span class="math inline">\(\beta_0\)</span>.</p>
 <p>Moreover, <span class="math inline">\(\beta_2=0.3\)</span> is similar to <span class="math inline">\(\hat{\beta_2}\)</span> = 0.3046728. As a result, <span class="math inline">\(\hat{\beta_2}\)</span> is a relative good estimator of <span class="math inline">\(\beta_2\)</span>.</p>
-<pre class="r"><code>s = sum((model$residuals)^2)/(n-1-1)
+<pre class="r"><code>s = sqrt(sum((model$residuals)^2)/(n-1-1))
 s</code></pre>
-<pre><code>## [1] 1.196093</code></pre>
-<p>From the code above, we can see that <span class="math inline">\(s\)</span> = 1.1960927. Since <span class="math inline">\(\sigma^2\)</span> = 1, which is not similar to 1.1960927. So <code>s</code> is not a relative good estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
+<pre><code>## [1] 1.09366</code></pre>
+<p>From the code above, we can see that <span class="math inline">\(s\)</span> = 1.0936602. Since <span class="math inline">\(\sigma^2\)</span> = 1, which is similar to 1.0936602. So <code>s</code> is a relative good estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
 <pre class="r"><code>summary(model)</code></pre>
 <pre><code>## 
 ## Call:
@@ -372,10 +372,10 @@ model</code></pre>
 <p>Since <span class="math inline">\(\hat{\beta_0}\)</span> = 2.1304996, which is similar to <span class="math inline">\(\beta_0=2\)</span>, so it is a relative good estimator.</p>
 <p>Since <span class="math inline">\(\hat{\beta_1}\)</span> = -1.7539783, which is not similar to <span class="math inline">\(\beta_1=2\)</span>, so it is not a relative good estimator.</p>
 <p>Since <span class="math inline">\(\hat{\beta_2}\)</span> = 7.3967417, which is not similar to <span class="math inline">\(\beta_2=0.3\)</span>, so it is not a relative good estimator.</p>
-<pre class="r"><code>s = sum((model$residuals)^2)/(n-2-1)
+<pre class="r"><code>s = sqrt(sum((model$residuals)^2)/(n-2-1))
 s</code></pre>
-<pre><code>## [1] 1.115512</code></pre>
-<p>From the code above, we can see that <span class="math inline">\(s\)</span> = 1.1155118. Since <span class="math inline">\(\sigma^2\)</span> = 1, which is not similar to 1.1155118. So <code>s</code> is not a relative good estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
+<pre><code>## [1] 1.056178</code></pre>
+<p>From the code above, we can see that <span class="math inline">\(s\)</span> = 1.0561779. Since <span class="math inline">\(\sigma^2\)</span> = 1, which is similar to 1.0561779. So <code>s</code> is a relative good estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
 <pre class="r"><code>summary(model)</code></pre>
 <pre><code>## 
 ## Call:
@@ -411,10 +411,10 @@ model</code></pre>
 <p>From the above code we can know that <span class="math inline">\(\hat{\beta_0}\)</span> = 2.1172354 and <span class="math inline">\(\hat{\beta_1}\)</span> = 1.9674957. They are estimators of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</p>
 <p>Since <span class="math inline">\(\hat{\beta_0}\)</span> = 2.1172354, which is similar to <span class="math inline">\(\beta_0=2\)</span>, so it is a relative good estimator.</p>
 <p>Since <span class="math inline">\(\hat{\beta_1}\)</span> = 1.9674957, which is similar to <span class="math inline">\(\beta_1=2\)</span>, so it is a relative good estimator.</p>
-<pre class="r"><code>s = sum((model$residuals)^2)/(n-1-1)
+<pre class="r"><code>s = sqrt(sum((model$residuals)^2)/(n-1-1))
 s</code></pre>
-<pre><code>## [1] 1.108974</code></pre>
-<p>From the code above, we can see that <span class="math inline">\(s\)</span> = 1.1089743. Since <span class="math inline">\(\sigma^2\)</span> = 1, which is not similar to 1.1089743. So <code>s</code> is not a relative good estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
+<pre><code>## [1] 1.053078</code></pre>
+<p>From the code above, we can see that <span class="math inline">\(s\)</span> = 1.0530785. Since <span class="math inline">\(\sigma^2\)</span> = 1, which is similar to 1.0530785. So <code>s</code> is a relative good estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
 <pre class="r"><code>summary(model)</code></pre>
 <pre><code>## 
 ## Call:
@@ -448,10 +448,10 @@ model</code></pre>
 <p>From the above code we can know that <span class="math inline">\(\hat{\beta_0}\)</span> = 2.119906 and <span class="math inline">\(\hat{\beta_2}\)</span> = 3.9273433. They are estimators of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_2\)</span>.</p>
 <p>Since <span class="math inline">\(\hat{\beta_0}\)</span> = 2.119906, which is similar to <span class="math inline">\(\beta_0=2\)</span>, so it is a relative good estimator.</p>
 <p>Since <span class="math inline">\(\hat{\beta_2}\)</span> = 3.9273433, which is not similar to <span class="math inline">\(\beta_2=0.3\)</span>, so it is not a relative good estimator.</p>
-<pre class="r"><code>s = sum((model$residuals)^2)/(n-1-1)
+<pre class="r"><code>s = sqrt(sum((model$residuals)^2)/(n-1-1))
 s</code></pre>
-<pre><code>## [1] 1.1052</code></pre>
-<p>From the code above, we can see that <span class="math inline">\(s\)</span> = 1.1052001. Since <span class="math inline">\(\sigma^2\)</span> = 1, which is not similar to 1.1052001. So <code>s</code> is not a relative good estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
+<pre><code>## [1] 1.051285</code></pre>
+<p>From the code above, we can see that <span class="math inline">\(s\)</span> = 1.051285. Since <span class="math inline">\(\sigma^2\)</span> = 1, which is similar to 1.051285. So <code>s</code> is a relative good estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
 <pre class="r"><code>summary(model)</code></pre>
 <pre><code>## 
 ## Call:
@@ -490,6 +490,7 @@ vif(model)</code></pre>
 <pre class="r"><code>x1 &lt;- c(x1, 0.1)
 x2 &lt;- c(x2, 0.8)
 y &lt;- c(y, 6)
+n = 101
 cor(x1, x2)</code></pre>
 <pre><code>## [1] 0.8573678</code></pre>
 <p><strong>a. (4 pts) Re-fit the linear models from parts c, d and e of Exercise 1 using this new data. What effect does this new observation have on each of the models? In each model, is this observation an outlier? A high-leverage point? Both? Explain your answers.</strong></p>
@@ -507,10 +508,10 @@ model</code></pre>
 <p>Since <span class="math inline">\(\hat{\beta_0}\)</span> = 2.1249533, which is similar to <span class="math inline">\(\beta_0=2\)</span>, so it is a relative good estimator.</p>
 <p>Since <span class="math inline">\(\hat{\beta_1}\)</span> = -0.5182774, which is not similar to <span class="math inline">\(\beta_1=2\)</span>, so it is not a relative good estimator.</p>
 <p>Since <span class="math inline">\(\hat{\beta_2}\)</span> = 4.9440013, which is not similar to <span class="math inline">\(\beta_2=0.3\)</span>, so it is not a relative good estimator.</p>
-<pre class="r"><code>s = sum((model$residuals)^2)/(n-2-1)
+<pre class="r"><code>s = sqrt(sum((model$residuals)^2)/(n-2-1))
 s</code></pre>
-<pre><code>## [1] 1.116059</code></pre>
-<p>From the code above, we can see that <span class="math inline">\(s\)</span> = 1.1160586. Since <span class="math inline">\(\sigma^2\)</span> = 1, which is not similar to 1.1160586. So <code>s</code> is not a relative good estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
+<pre><code>## [1] 1.051033</code></pre>
+<p>From the code above, we can see that <span class="math inline">\(s\)</span> = 1.0510329. Since <span class="math inline">\(\sigma^2\)</span> = 1, which is similar to 1.0510329. So <code>s</code> is a relative good estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
 <pre class="r"><code>summary(model)</code></pre>
 <pre><code>## 
 ## Call:
@@ -541,10 +542,10 @@ plot(lm(y ~ x1 + x2))</code></pre>
 head(rstandard(model)[rstandard(model) &lt; -3 | rstandard(model) &gt; 3])</code></pre>
 <pre><code>## named numeric(0)</code></pre>
 <pre class="r"><code>#check leverage
-head(hatvalues(model)[hatvalues(model) &gt; (2+1)/n])</code></pre>
+head(hatvalues(model)[hatvalues(model) &gt; (2+1)/(n)])</code></pre>
 <pre><code>##          4          6          7         10         18         21 
 ## 0.03134825 0.03167553 0.03554767 0.03929726 0.04264765 0.03467333</code></pre>
-<p>From the Residuals vs Leverage plot and the calculation above, we can see that we have high leverage, because it exceeds <span class="math inline">\((2+1)/100=0.03\)</span>, but no outlier.</p>
+<p>From the Residuals vs Leverage plot and the calculation above, we can see that we have high leverage, but no outlier.</p>
 <p><strong>Repeat d: </strong></p>
 <pre class="r"><code>model = lm(y ~ x1)
 model</code></pre>
@@ -558,10 +559,10 @@ model</code></pre>
 <p>From the above code we can know that <span class="math inline">\(\hat{\beta_0}\)</span> = 2.2616126 and <span class="math inline">\(\hat{\beta_1}\)</span> = 1.75749. They are estimators of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</p>
 <p>Since <span class="math inline">\(\hat{\beta_0}\)</span> = 2.2616126, which is not similar to <span class="math inline">\(\beta_0=2\)</span>, so it is not a relative good estimator.</p>
 <p>Since <span class="math inline">\(\hat{\beta_1}\)</span> = 1.75749, which is not similar to <span class="math inline">\(\beta_1=2\)</span>, so it is not a relative good estimator.</p>
-<pre class="r"><code>s = sum((model$residuals)^2)/(n-1-1)
+<pre class="r"><code>s = sqrt(sum((model$residuals)^2)/(n-1-1))
 s</code></pre>
-<pre><code>## [1] 1.242974</code></pre>
-<p>From the code above, we can see that <span class="math inline">\(s\)</span> = 1.2429736. Since <span class="math inline">\(\sigma^2\)</span> = 1, which is not similar to 1.2429736. So <code>s</code> is not a relative good estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
+<pre><code>## [1] 1.109242</code></pre>
+<p>From the code above, we can see that <span class="math inline">\(s\)</span> = 1.1092422. Since <span class="math inline">\(\sigma^2\)</span> = 1, which is not similar to 1.1092422. So <code>s</code> is not a relative good estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
 <pre class="r"><code>summary(model)</code></pre>
 <pre><code>## 
 ## Call:
@@ -591,7 +592,7 @@ head(rstandard(model)[rstandard(model) &lt; -3 | rstandard(model) &gt; 3])</code
 <pre><code>##      101 
 ## 3.266916</code></pre>
 <pre class="r"><code>#check leverage
-head(hatvalues(model)[hatvalues(model) &gt; (1+1)/n])</code></pre>
+head(hatvalues(model)[hatvalues(model) &gt; (1+1)/(n)])</code></pre>
 <pre><code>##          4          5          6          7         10         11 
 ## 0.03133322 0.02330903 0.03027970 0.03547876 0.03802701 0.02294265</code></pre>
 <p>From the Residuals vs Leverage plot and the calculation, we can see that we have outlier, and we have high leverage.</p>
@@ -608,10 +609,10 @@ model</code></pre>
 <p>From the above code we can know that <span class="math inline">\(\hat{\beta_0}\)</span> = 2.0772972 and <span class="math inline">\(\hat{\beta_2}\)</span> = 4.1163502. They are estimators of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_2\)</span>.</p>
 <p>Since <span class="math inline">\(\hat{\beta_0}\)</span> = 2.0772972, which is similar to <span class="math inline">\(\beta_0=2\)</span>, so it is a relative good estimator.</p>
 <p>Since <span class="math inline">\(\hat{\beta_1}\)</span> = 4.1163502, which is not similar to <span class="math inline">\(\beta_3=0.3\)</span>, so it is not a relative good estimator</p>
-<pre class="r"><code>s = sum((model$residuals)^2)/(n-1-1)
+<pre class="r"><code>s = sqrt(sum((model$residuals)^2)/(n-1-1))
 s</code></pre>
-<pre><code>## [1] 1.109943</code></pre>
-<p>From the code above, we can see that <span class="math inline">\(s\)</span> = 1.109943. Since <span class="math inline">\(\sigma^2\)</span> = 1, which is not similar to 1.109943. So <code>s</code> is not a relative good estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
+<pre><code>## [1] 1.048204</code></pre>
+<p>From the code above, we can see that <span class="math inline">\(s\)</span> = 1.0482039. Since <span class="math inline">\(\sigma^2\)</span> = 1, which is similar to 1.0482039. So <code>s</code> is a relative good estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
 <pre class="r"><code>summary(model)</code></pre>
 <pre><code>## 
 ## Call:
@@ -640,10 +641,10 @@ plot(lm(y ~ x2))</code></pre>
 head(rstandard(model)[rstandard(model) &lt; -3 | rstandard(model) &gt; 3])</code></pre>
 <pre><code>## named numeric(0)</code></pre>
 <pre class="r"><code>#check leverage
-head(hatvalues(model)[hatvalues(model) &gt; (1+1)/n])</code></pre>
+head(hatvalues(model)[hatvalues(model) &gt; (1+1)/(n)])</code></pre>
 <pre><code>##          4          5          6          7         10         12 
 ## 0.02515838 0.02049865 0.02995792 0.02989270 0.03618774 0.02473736</code></pre>
-<p>From the Residuals vs Leverage plot, we can see that we don’t have outlier, and we have high leverage.</p>
+<p>From the Residuals vs Leverage plot, we can see that we don’t have outlier, but we have high leverage.</p>
 <p>When we fit linear regression <code>lm(y ~ x1 + x2)</code> we fail to reject <span class="math inline">\(H_0:~\beta_1=0\)</span> and conclude <span class="math inline">\(\beta_1\)</span> may be 0, and we reject <span class="math inline">\(H_0:~\beta_2=0\)</span> and conclude <span class="math inline">\(\beta_2\)</span> may not be 0.</p>
 <p>However, when we fit linear regression <code>lm(y ~ x2)</code>, we reject <span class="math inline">\(H_0:~\beta_1=0\)</span> and conclude <span class="math inline">\(\beta_1\)</span> may not be 0.</p>
 <p>The results are not consistent.</p>
@@ -686,7 +687,7 @@ ggpairs(Carseats[, c(1,6,3,4,10,7)],
 <p>All plots on the diagonal are <code>univariate</code> since they take one variable.</p>
 <p>All plots other than the diagonal are <code>bivariate</code> since they take two variables.</p>
 <p>The x-axis represents the variables of the columns, and the y-axis represents the variables of the rows.</p>
-<p>The distribution of Advertising looks different from others, since it has a very long right tail. Most of its data is on the left side.</p>
+<p>The distribution of Advertising looks different from others, since it has a very long right tail. Most of its data is on the left side, which is 0 advertising. Also, the advertising variable is a continuous line consistently decreases.</p>
 </div>
 <div id="problem-b" class="section level2">
 <h2>Problem b</h2>
@@ -797,9 +798,9 @@ head(rstandard(model)[rstandard(model) &lt; -3 | rstandard(model) &gt; 3])</code
 <pre><code>##        51 
 ## -3.004912</code></pre>
 <pre class="r"><code>#check leverage
-head(hatvalues(model)[hatvalues(model) &gt; (5+1)/400])</code></pre>
-<pre><code>##          2          3          6          8         12         14 
-## 0.02385900 0.01524786 0.02566011 0.01549497 0.01693474 0.02326280</code></pre>
+head(hatvalues(model)[hatvalues(model) &gt; (4+1)/400])</code></pre>
+<pre><code>##          2          3          6          8          9         10 
+## 0.02385900 0.01524786 0.02566011 0.01549497 0.01393795 0.01484117</code></pre>
 <p>Moreover, from the residuals vs leverage plot and calculation above, we can see we have an outlier, and we have high leverage observations.</p>
 <p>From the Normal Q-Q plot, since almost all the points fit the dash line, we can conclude that the residuals have normaility.</p>
 </div>
@@ -854,17 +855,17 @@ ggplot(data = x1x2, mapping = aes(x = x1, y = x2))+
   geom_smooth(method = &quot;lm&quot;, se = FALSE)
 model = lm(y ~ x1 + x2)
 model
-s = sum((model$residuals)^2)/(n-2-1)
+s = sqrt(sum((model$residuals)^2)/(n-2-1))
 s
 summary(model)
 model = lm(y ~ x1)
 model
-s = sum((model$residuals)^2)/(n-1-1)
+s = sqrt(sum((model$residuals)^2)/(n-1-1))
 s
 summary(model)
 model = lm(y ~ x2)
 model
-s = sum((model$residuals)^2)/(n-1-1)
+s = sqrt(sum((model$residuals)^2)/(n-1-1))
 s
 summary(model)
 rm(list=ls())
@@ -882,17 +883,17 @@ ggplot(data = x1x2, mapping = aes(x = x1, y = x2))+
   geom_smooth(method = &quot;lm&quot;, se = FALSE)
 model = lm(y ~ x1 + x2)
 model
-s = sum((model$residuals)^2)/(n-2-1)
+s = sqrt(sum((model$residuals)^2)/(n-2-1))
 s
 summary(model)
 model = lm(y ~ x1)
 model
-s = sum((model$residuals)^2)/(n-1-1)
+s = sqrt(sum((model$residuals)^2)/(n-1-1))
 s
 summary(model)
 model = lm(y ~ x2)
 model
-s = sum((model$residuals)^2)/(n-1-1)
+s = sqrt(sum((model$residuals)^2)/(n-1-1))
 s
 summary(model)
 model = lm(y ~ x1 + x2)
@@ -900,10 +901,11 @@ vif(model)
 x1 &lt;- c(x1, 0.1)
 x2 &lt;- c(x2, 0.8)
 y &lt;- c(y, 6)
+n = 101
 cor(x1, x2)
 model = lm(y ~ x1 + x2)
 model
-s = sum((model$residuals)^2)/(n-2-1)
+s = sqrt(sum((model$residuals)^2)/(n-2-1))
 s
 summary(model)
 par(mfrow = c(2, 2))
@@ -911,10 +913,10 @@ plot(lm(y ~ x1 + x2))
 #check outliers
 head(rstandard(model)[rstandard(model) &lt; -3 | rstandard(model) &gt; 3])
 #check leverage
-head(hatvalues(model)[hatvalues(model) &gt; (2+1)/n])
+head(hatvalues(model)[hatvalues(model) &gt; (2+1)/(n)])
 model = lm(y ~ x1)
 model
-s = sum((model$residuals)^2)/(n-1-1)
+s = sqrt(sum((model$residuals)^2)/(n-1-1))
 s
 summary(model)
 par(mfrow = c(2, 2))
@@ -922,10 +924,10 @@ plot(lm(y ~ x1))
 #check outliers
 head(rstandard(model)[rstandard(model) &lt; -3 | rstandard(model) &gt; 3])
 #check leverage
-head(hatvalues(model)[hatvalues(model) &gt; (1+1)/n])
+head(hatvalues(model)[hatvalues(model) &gt; (1+1)/(n)])
 model = lm(y ~ x2)
 model
-s = sum((model$residuals)^2)/(n-1-1)
+s = sqrt(sum((model$residuals)^2)/(n-1-1))
 s
 summary(model)
 par(mfrow = c(2, 2))
@@ -933,7 +935,7 @@ plot(lm(y ~ x2))
 #check outliers
 head(rstandard(model)[rstandard(model) &lt; -3 | rstandard(model) &gt; 3])
 #check leverage
-head(hatvalues(model)[hatvalues(model) &gt; (1+1)/n])
+head(hatvalues(model)[hatvalues(model) &gt; (1+1)/(n)])
 rm(list=ls())
 library(ISLR)
 ggpairs(Carseats[, c(1,6,3,4,10,7)],
@@ -954,7 +956,7 @@ plot(model)
 #check outliers
 head(rstandard(model)[rstandard(model) &lt; -3 | rstandard(model) &gt; 3])
 #check leverage
-head(hatvalues(model)[hatvalues(model) &gt; (5+1)/400])
+head(hatvalues(model)[hatvalues(model) &gt; (4+1)/400])
 df = as.data.frame(Carseats)
 df$Advertising_levels[df$Advertising==0] = &quot;None&quot;
 df$Advertising_levels[df$Advertising&lt;=10&amp;df$Advertising!=0] = &quot;Low&quot;
