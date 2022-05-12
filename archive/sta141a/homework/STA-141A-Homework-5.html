@@ -490,7 +490,12 @@ test.new$Pre.Species = pre.species
 confusion.matrix = table(test.new$Pre.Species, test.species$Species,
                          dnn=c(&quot;Predicted&quot;,&quot;True&quot;))
 confusion.matrix = confusion.matrix[, 2:3]
-misclassification = 1 - sum(diag(confusion.matrix))/(virginica+versicolor)
+confusion.matrix</code></pre>
+<pre><code>##             True
+## Predicted    versicolor virginica
+##   versicolor          5         4
+##   virginica           5         6</code></pre>
+<pre class="r"><code>misclassification = 1 - sum(diag(confusion.matrix))/(virginica+versicolor)
 misclassification</code></pre>
 <pre><code>## [1] 0.45</code></pre>
 <p>The confusion matrix is shown above. The misclassification error rate is 0.45.</p>
@@ -747,7 +752,12 @@ test.new$Pre.Species = pre.species
 confusion.matrix = table(test.new$Pre.Species, test.species$Species,
                          dnn=c(&quot;Predicted&quot;,&quot;True&quot;))
 confusion.matrix = confusion.matrix[, 2:3]
-misclassification = 1 - sum(diag(confusion.matrix))/(virginica+versicolor)
+confusion.matrix</code></pre>
+<pre><code>##             True
+## Predicted    versicolor virginica
+##   versicolor          4         2
+##   virginica           6         8</code></pre>
+<pre class="r"><code>misclassification = 1 - sum(diag(confusion.matrix))/(virginica+versicolor)
 misclassification</code></pre>
 <pre><code>## [1] 0.4</code></pre>
 </div>
@@ -989,6 +999,7 @@ test.new$Pre.Species = pre.species
 confusion.matrix = table(test.new$Pre.Species, test.species$Species,
                          dnn=c(&quot;Predicted&quot;,&quot;True&quot;))
 confusion.matrix = confusion.matrix[, 2:3]
+confusion.matrix
 misclassification = 1 - sum(diag(confusion.matrix))/(virginica+versicolor)
 misclassification
 k=5
@@ -1033,6 +1044,7 @@ test.new$Pre.Species = pre.species
 confusion.matrix = table(test.new$Pre.Species, test.species$Species,
                          dnn=c(&quot;Predicted&quot;,&quot;True&quot;))
 confusion.matrix = confusion.matrix[, 2:3]
+confusion.matrix
 misclassification = 1 - sum(diag(confusion.matrix))/(virginica+versicolor)
 misclassification
 model = glm(Species ~ Sepal.Length + Sepal.Width,
