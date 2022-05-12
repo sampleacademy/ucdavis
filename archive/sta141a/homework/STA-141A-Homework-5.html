@@ -172,7 +172,7 @@ pre code {
 
 <h1 class="title toc-ignore">STA 141A Homework 5</h1>
 <h4 class="author">Li Yuan</h4>
-<h4 class="date">5/8/2022</h4>
+<h4 class="date">5/12/2022</h4>
 
 </div>
 
@@ -885,22 +885,56 @@ confusion</code></pre>
 <div id="question-c-1" class="section level3">
 <h3>Question (c)</h3>
 <p>Write a very brief summary (maximum of <code>100</code> words) about the comparative performance of the three different classification methods (knn with <span class="math inline">\(k=1\)</span>, knn with <span class="math inline">\(k=5\)</span> and logistic regression).</p>
+<p>When using k-NN for k = 1, our error rate is about 0.45, when using k = 5, our error rate is about 0.4, when using logistic regression, our error rate is also about 0.4. As a result, we can see that the performance of k-NN when k = 1 is the worst, and the performance of k-NN with k = 5 and logistic regression are similar.</p>
 </div>
 </div>
 <div id="lda-extra-credit" class="section level2">
 <h2>3. LDA: Extra credit</h2>
 <p>Use LDA for classifying the test data. Use <code>Sepal.Length</code> and <code>Sepal.Width</code> as the predictor variables (or features) (1.5 points).</p>
+<pre class="r"><code>lda.model = lda(Species ~ Sepal.Length + Sepal.Width, train)
+lda.model</code></pre>
+<pre><code>## Call:
+## lda(Species ~ Sepal.Length + Sepal.Width, data = train)
+## 
+## Prior probabilities of groups:
+## versicolor  virginica 
+##        0.5        0.5 
+## 
+## Group means:
+##            Sepal.Length Sepal.Width
+## versicolor       5.8950      2.7450
+## virginica        6.5925      2.9825
+## 
+## Coefficients of linear discriminants:
+##                    LD1
+## Sepal.Length 1.7180582
+## Sepal.Width  0.5633604</code></pre>
 <div id="question-a-2" class="section level3">
 <h3>Question (a)</h3>
 <p>Report the class-specific means of the predictor variables for the training data.</p>
+<pre class="r"><code>lda.model$means</code></pre>
+<pre><code>##            Sepal.Length Sepal.Width
+## versicolor       5.8950      2.7450
+## virginica        6.5925      2.9825</code></pre>
+<p>The means of the predictor variables are shown above.</p>
 </div>
 <div id="question-b-2" class="section level3">
 <h3>Question (b)</h3>
 <p>Compute the confusion matrix for the test data and the misclassification error rate.</p>
+<pre class="r"><code>predicted = droplevels(predict(lda.model, test.data)$class)
+confusion = table(predicted,factor(test.data$Species),dnn = c(&quot;Predicted&quot;,&quot;True&quot;))[, 2:3]
+confusion</code></pre>
+<pre><code>##             True
+## Predicted    versicolor virginica
+##   versicolor          4         2
+##   virginica           6         8</code></pre>
+<pre class="r"><code>1 - sum(diag(confusion))/sum(confusion)</code></pre>
+<pre><code>## [1] 0.4</code></pre>
 </div>
 <div id="question-c-2" class="section level3">
 <h3>Question (c)</h3>
 <p>Compare the results with the previous ones.</p>
+<p>By using LDA approach, our confusion matrix and the error rate are the same as the ones using k-NN with k = 5 and logistic regression. As a result, it may have the similar performance as k-NN with k = 5 and logistic regression. Of course, it performs better than k-NN with k = 1.</p>
 </div>
 </div>
 </div>
@@ -912,6 +946,7 @@ library(ISLR)
 library(class)
 library(knitr)
 library(dplyr)
+library(MASS)
 data(iris)
 data.updated = iris[ which(iris[, 5] == &quot;versicolor&quot; | iris[, 5] == &quot;virginica&quot;), ]
 test = rbind(data.updated[1:10,], data.updated[51:60,])[-5]
@@ -1023,6 +1058,13 @@ model = glm(Species ~ Sepal.Length,
 model
 summary(model)
 predicted = ifelse(predict(model, type = &quot;response&quot;, test.data) &gt; 0.5,&quot;virginica&quot;,&quot;versicolor&quot;)
+confusion = table(predicted,factor(test.data$Species),dnn = c(&quot;Predicted&quot;,&quot;True&quot;))[, 2:3]
+confusion
+1 - sum(diag(confusion))/sum(confusion)
+lda.model = lda(Species ~ Sepal.Length + Sepal.Width, train)
+lda.model
+lda.model$means
+predicted = droplevels(predict(lda.model, test.data)$class)
 confusion = table(predicted,factor(test.data$Species),dnn = c(&quot;Predicted&quot;,&quot;True&quot;))[, 2:3]
 confusion
 1 - sum(diag(confusion))/sum(confusion)</code></pre>
