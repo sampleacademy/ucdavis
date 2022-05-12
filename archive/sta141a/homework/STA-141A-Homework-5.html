@@ -488,32 +488,9 @@ kable(result, caption = &quot;Probability table when k = 1 for the test set&quot
 <pre class="r"><code>test.new = test
 test.new$Pre.Species = pre.species
 confusion.matrix = table(test.new$Pre.Species, test.species$Species,
-                         dnn=c(&quot;Predicted Species&quot;,&quot;True Species&quot;))
+                         dnn=c(&quot;Predicted&quot;,&quot;True&quot;))
 confusion.matrix = confusion.matrix[, 2:3]
-kable(confusion.matrix, caption = &quot;Comfusion matrix for test data when k = 1&quot;)</code></pre>
-<table>
-<caption>Comfusion matrix for test data when k = 1</caption>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="right">versicolor</th>
-<th align="right">virginica</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">versicolor</td>
-<td align="right">5</td>
-<td align="right">4</td>
-</tr>
-<tr class="even">
-<td align="left">virginica</td>
-<td align="right">5</td>
-<td align="right">6</td>
-</tr>
-</tbody>
-</table>
-<pre class="r"><code>misclassification = 1 - sum(diag(confusion.matrix))/(virginica+versicolor)
+misclassification = 1 - sum(diag(confusion.matrix))/(virginica+versicolor)
 misclassification</code></pre>
 <pre><code>## [1] 0.45</code></pre>
 <p>The confusion matrix is shown above. The misclassification error rate is 0.45.</p>
@@ -768,32 +745,9 @@ kable(result, caption = &quot;Probability table when k = 5 for the test set&quot
 test.new = test
 test.new$Pre.Species = pre.species
 confusion.matrix = table(test.new$Pre.Species, test.species$Species,
-                         dnn=c(&quot;Predicted Species&quot;,&quot;True Species&quot;))
+                         dnn=c(&quot;Predicted&quot;,&quot;True&quot;))
 confusion.matrix = confusion.matrix[, 2:3]
-kable(confusion.matrix, caption = &quot;Comfusion matrix for test data when k = 5&quot;)</code></pre>
-<table>
-<caption>Comfusion matrix for test data when k = 5</caption>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="right">versicolor</th>
-<th align="right">virginica</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">versicolor</td>
-<td align="right">4</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td align="left">virginica</td>
-<td align="right">6</td>
-<td align="right">8</td>
-</tr>
-</tbody>
-</table>
-<pre class="r"><code>misclassification = 1 - sum(diag(confusion.matrix))/(virginica+versicolor)
+misclassification = 1 - sum(diag(confusion.matrix))/(virginica+versicolor)
 misclassification</code></pre>
 <pre><code>## [1] 0.4</code></pre>
 </div>
@@ -805,8 +759,7 @@ misclassification</code></pre>
 <h3>Question (a)</h3>
 <p>(1.5 points) Fit a logistic model to the training data, using the variables <code>Sepal.Length</code> and <code>Sepal.Width</code> as predictors.</p>
 <pre class="r"><code>model = glm(Species ~ Sepal.Length + Sepal.Width,
-            data = train, family = binomial)
-glm_default = glm(Species ~ ., data = train, family = binomial)</code></pre>
+            data = train, family = binomial)</code></pre>
 <p>Obtain the estimates for the model parameters.</p>
 <pre class="r"><code>model</code></pre>
 <pre><code>## 
@@ -863,16 +816,16 @@ odd</code></pre>
 <pre><code>## [1] 0.2783062</code></pre>
 <p>The odds for a flower with <code>Sepal.Length = 5.5</code> and <code>Sepal.Width=3.5</code> is 0.2783062.</p>
 <p>Compute the confusion matrix for the test data and the misclassification error rate.</p>
-<pre class="r"><code>confusion = table(ifelse(model$fitted.values &gt; 0.5, 1, 0),
-                   ifelse(train$Species == &quot;virginica&quot;, 1, 0),
-                   dnn = c(&quot;Predicted&quot;,&quot;True&quot;))
+<pre class="r"><code>test.data = iris %&gt;% group_by(Species) %&gt;% slice(1:10)
+predicted = ifelse(predict(model, type = &quot;response&quot;, test.data) &gt; 0.5,&quot;virginica&quot;,&quot;versicolor&quot;)
+confusion = table(predicted,factor(test.data$Species),dnn = c(&quot;Predicted&quot;,&quot;True&quot;))[, 2:3]
 confusion</code></pre>
-<pre><code>##          True
-## Predicted  0  1
-##         0 33 11
-##         1  7 29</code></pre>
+<pre><code>##             True
+## Predicted    versicolor virginica
+##   versicolor          4         2
+##   virginica           6         8</code></pre>
 <pre class="r"><code>1 - sum(diag(confusion))/sum(confusion)</code></pre>
-<pre><code>## [1] 0.225</code></pre>
+<pre><code>## [1] 0.4</code></pre>
 </div>
 <div id="question-b-1" class="section level3">
 <h3>Question (b)</h3>
@@ -917,18 +870,17 @@ confusion</code></pre>
 ## Number of Fisher Scoring iterations: 5</code></pre>
 <p>The estimated standard error for <code>Sepal.Length</code> is 0.6667919.</p>
 <p>Compute the confusion matrix for the test data, and the misclassification error rate.</p>
-<pre class="r"><code>confusion = table(ifelse(model$fitted.values &gt; 0.5, 1, 0),
-                   ifelse(train$Species == &quot;virginica&quot;, 1, 0),
-                   dnn = c(&quot;Predicted&quot;,&quot;True&quot;))
+<pre class="r"><code>predicted = ifelse(predict(model, type = &quot;response&quot;, test.data) &gt; 0.5,&quot;virginica&quot;,&quot;versicolor&quot;)
+confusion = table(predicted,factor(test.data$Species),dnn = c(&quot;Predicted&quot;,&quot;True&quot;))[, 2:3]
 confusion</code></pre>
-<pre><code>##          True
-## Predicted  0  1
-##         0 32 11
-##         1  8 29</code></pre>
+<pre><code>##             True
+## Predicted    versicolor virginica
+##   versicolor          4         2
+##   virginica           6         8</code></pre>
 <pre class="r"><code>1 - sum(diag(confusion))/sum(confusion)</code></pre>
-<pre><code>## [1] 0.2375</code></pre>
-<p>Compare the results with those in 2(a). Does your result in 2(b)(ii) support the answer to 2(a)(ii)</p>
-<p>The result in 2(b)(ii) does not support the answer in 2(a)(ii). The misclassification error rate for using <code>Sepal.Length</code> is 0.2375, but the misclassification error rate for <code>Sepal.Length</code> and <code>Sepal.Width</code> as predictors is 0.225. Moreover, the confusion matrices are slightly different. from each other.</p>
+<pre><code>## [1] 0.4</code></pre>
+<p>Compare the results with those in 2(a). Does your result in 2(b)(ii) support the answer to 2(a)(ii).</p>
+<p>The result in 2(b)(ii) supports the answer in 2(a)(ii). The misclassification error rates are the same, which is 0.4. Moreover, the confusion matrices are also the same.</p>
 </div>
 <div id="question-c-1" class="section level3">
 <h3>Question (c)</h3>
@@ -959,6 +911,7 @@ rm(list=ls())
 library(ISLR)
 library(class)
 library(knitr)
+library(dplyr)
 data(iris)
 data.updated = iris[ which(iris[, 5] == &quot;versicolor&quot; | iris[, 5] == &quot;virginica&quot;), ]
 test = rbind(data.updated[1:10,], data.updated[51:60,])[-5]
@@ -999,9 +952,8 @@ kable(result, caption = &quot;Probability table when k = 1 for the test set&quot
 test.new = test
 test.new$Pre.Species = pre.species
 confusion.matrix = table(test.new$Pre.Species, test.species$Species,
-                         dnn=c(&quot;Predicted Species&quot;,&quot;True Species&quot;))
+                         dnn=c(&quot;Predicted&quot;,&quot;True&quot;))
 confusion.matrix = confusion.matrix[, 2:3]
-kable(confusion.matrix, caption = &quot;Comfusion matrix for test data when k = 1&quot;)
 misclassification = 1 - sum(diag(confusion.matrix))/(virginica+versicolor)
 misclassification
 k=5
@@ -1044,14 +996,12 @@ kable(result, caption = &quot;Probability table when k = 5 for the test set&quot
 test.new = test
 test.new$Pre.Species = pre.species
 confusion.matrix = table(test.new$Pre.Species, test.species$Species,
-                         dnn=c(&quot;Predicted Species&quot;,&quot;True Species&quot;))
+                         dnn=c(&quot;Predicted&quot;,&quot;True&quot;))
 confusion.matrix = confusion.matrix[, 2:3]
-kable(confusion.matrix, caption = &quot;Comfusion matrix for test data when k = 5&quot;)
 misclassification = 1 - sum(diag(confusion.matrix))/(virginica+versicolor)
 misclassification
 model = glm(Species ~ Sepal.Length + Sepal.Width,
             data = train, family = binomial)
-glm_default = glm(Species ~ ., data = train, family = binomial)
 model
 summary(model)
 probability = exp(summary(model)$coefficients[1, 1] + 
@@ -1063,18 +1013,17 @@ probability = exp(summary(model)$coefficients[1, 1] +
 probability
 odd = probability / (1 - probability)
 odd
-confusion = table(ifelse(model$fitted.values &gt; 0.5, 1, 0),
-                   ifelse(train$Species == &quot;virginica&quot;, 1, 0),
-                   dnn = c(&quot;Predicted&quot;,&quot;True&quot;))
+test.data = iris %&gt;% group_by(Species) %&gt;% slice(1:10)
+predicted = ifelse(predict(model, type = &quot;response&quot;, test.data) &gt; 0.5,&quot;virginica&quot;,&quot;versicolor&quot;)
+confusion = table(predicted,factor(test.data$Species),dnn = c(&quot;Predicted&quot;,&quot;True&quot;))[, 2:3]
 confusion
 1 - sum(diag(confusion))/sum(confusion)
 model = glm(Species ~ Sepal.Length,
             data = train, family = &#39;binomial&#39;)
 model
 summary(model)
-confusion = table(ifelse(model$fitted.values &gt; 0.5, 1, 0),
-                   ifelse(train$Species == &quot;virginica&quot;, 1, 0),
-                   dnn = c(&quot;Predicted&quot;,&quot;True&quot;))
+predicted = ifelse(predict(model, type = &quot;response&quot;, test.data) &gt; 0.5,&quot;virginica&quot;,&quot;versicolor&quot;)
+confusion = table(predicted,factor(test.data$Species),dnn = c(&quot;Predicted&quot;,&quot;True&quot;))[, 2:3]
 confusion
 1 - sum(diag(confusion))/sum(confusion)</code></pre>
 </div>
