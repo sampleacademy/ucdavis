@@ -871,8 +871,8 @@ confusion</code></pre>
 ## Predicted  0  1
 ##         0 33 11
 ##         1  7 29</code></pre>
-<pre class="r"><code>sum(diag(confusion))/sum(confusion)</code></pre>
-<pre><code>## [1] 0.775</code></pre>
+<pre class="r"><code>1 - sum(diag(confusion))/sum(confusion)</code></pre>
+<pre><code>## [1] 0.225</code></pre>
 </div>
 <div id="question-b-1" class="section level3">
 <h3>Question (b)</h3>
@@ -915,7 +915,7 @@ confusion</code></pre>
 ## AIC: 84.59
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
-<p>The standard error for <code>Sepal.Length</code> is 0.6667919.</p>
+<p>The estimated standard error for <code>Sepal.Length</code> is 0.6667919.</p>
 <p>Compute the confusion matrix for the test data, and the misclassification error rate.</p>
 <pre class="r"><code>confusion = table(ifelse(model$fitted.values &gt; 0.5, 1, 0),
                    ifelse(train$Species == &quot;virginica&quot;, 1, 0),
@@ -925,9 +925,10 @@ confusion</code></pre>
 ## Predicted  0  1
 ##         0 32 11
 ##         1  8 29</code></pre>
-<pre class="r"><code>sum(diag(confusion))/sum(confusion)</code></pre>
-<pre><code>## [1] 0.7625</code></pre>
-<p>Compare the results with those in 3(a). Does your result in 3(b)(ii) support the answer to 3(a)(ii)</p>
+<pre class="r"><code>1 - sum(diag(confusion))/sum(confusion)</code></pre>
+<pre><code>## [1] 0.2375</code></pre>
+<p>Compare the results with those in 2(a). Does your result in 2(b)(ii) support the answer to 2(a)(ii)</p>
+<p>The result in 2(b)(ii) does not support the answer in 2(a)(ii). The misclassification error rate for using <code>Sepal.Length</code> is 0.2375, but the misclassification error rate for <code>Sepal.Length</code> and <code>Sepal.Width</code> as predictors is 0.225. Moreover, the confusion matrices are slightly different. from each other.</p>
 </div>
 <div id="question-c-1" class="section level3">
 <h3>Question (c)</h3>
@@ -1066,7 +1067,7 @@ confusion = table(ifelse(model$fitted.values &gt; 0.5, 1, 0),
                    ifelse(train$Species == &quot;virginica&quot;, 1, 0),
                    dnn = c(&quot;Predicted&quot;,&quot;True&quot;))
 confusion
-sum(diag(confusion))/sum(confusion)
+1 - sum(diag(confusion))/sum(confusion)
 model = glm(Species ~ Sepal.Length,
             data = train, family = &#39;binomial&#39;)
 model
@@ -1075,7 +1076,7 @@ confusion = table(ifelse(model$fitted.values &gt; 0.5, 1, 0),
                    ifelse(train$Species == &quot;virginica&quot;, 1, 0),
                    dnn = c(&quot;Predicted&quot;,&quot;True&quot;))
 confusion
-sum(diag(confusion))/sum(confusion)</code></pre>
+1 - sum(diag(confusion))/sum(confusion)</code></pre>
 </div>
 
 
